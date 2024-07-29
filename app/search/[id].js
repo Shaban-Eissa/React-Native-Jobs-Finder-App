@@ -14,9 +14,12 @@ import axios from "axios";
 
 import styles from "../../styles/search";
 
-import { COLORS, icons, images, SIZES } from "../../constants";
+import { COLORS, icons, SIZES } from "../../constants";
 
 import { ScreenHeaderBtn, NearbyJobCard } from "../../components";
+
+const rapidApiKey = process.env.EXPO_PUBLIC_RAPID_API_KEY;
+const rapidApiHost = process.env.EXPO_PUBLIC_RAPIDAPI_HOST;
 
 const JobSearch = () => {
   const params = useGlobalSearchParams();
@@ -37,9 +40,8 @@ const JobSearch = () => {
         method: "GET",
         url: `https://jsearch.p.rapidapi.com/search`,
         headers: {
-          "X-RapidAPI-Key":
-            "394765feefmsh9297ff075d69a1fp1f0202jsna1c5c4c5a3f5",
-          "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
+          "X-RapidAPI-Key": `${rapidApiKey}`,
+          "X-RapidAPI-Host": `${rapidApiHost}`,
         },
         params: {
           query: params.id,
